@@ -1,0 +1,43 @@
+docker compose up postgres-db -d
+
+
+
+
+
+GIT
+
+
+1. Configura la identidad local en la carpeta del proyecto (si no lo has hecho)
+Asegúrate de que tus commits de este proyecto se registren con tu correo personal:
+
+Bash
+git config user.name "Marco Personal"
+git config user.email "hdezsalasmarco@gmail.com"
+2. Configura la URL del Remote usando tu Alias SSH (github-personal)
+En lugar de usar la URL con https:// o git@github.com:, debes asignarle el alias que definiste en tu file de ~/.ssh/config:
+
+Bash
+# Cambiamos la URL remota para usar el alias 'github-personal'
+git remote set-url origin git@github-personal:marcohesa/wallet-core.git
+(Si el repositorio en GitHub se llama digital_wallet, cámbialo por git@github-personal:marcohesa/digital_wallet.git).
+
+3. Verifica que la URL esté usando el alias correcto
+Ejecuta este comando:
+
+Bash
+git remote -v
+Deberías ver una salida como esta:
+
+Plaintext
+origin  git@github-personal:marcohesa/wallet-core.git (fetch)
+origin  git@github-personal:marcohesa/wallet-core.git (push)
+4. Sube tus cambios a GitHub
+Una vez configurado el remote, el flujo habitual para hacer el push es el de siempre:
+
+Bash
+# Aseguras tu rama 'main'
+git branch -M main
+
+# Subes tus cambios utilizando tu SSH Key Personal
+git push -u origin main
+¡Listo! Git usará automáticamente tu llave id_ed25519_personal mapeada al host github-personal para autenticarte sin pedir contraseña ni chocar con tu cuenta de trabajo.
